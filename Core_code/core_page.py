@@ -28,46 +28,40 @@ class CorePage(BasePage):
             return len(products)
 
     def get_all_prices(self):
-        time.sleep(3)
-        name_element = self.find_more_elements(PageLocators.get_products_name)
-        time.sleep(3)
+        time.sleep(10)
         price_element = self.find_more_elements(PageLocators.get_product_price)
 
-        name_key = []
-        price_value = []
+        min_price = float('inf')  # Initialize min_price to positive infinity
 
-        for price in price_element:
-            price_value.append(price.text)
+        for value in price_element:
+            price_string = value.text.replace(",", ".").replace("lei", "")
+            if price_string == "N/A":
+                continue
 
-        for name in name_element:
-            name_key.append(name.text)
+            price = float(price_string)
 
-        dictionary_result = dict(zip(name_key, price_value))
-        print(dictionary_result)
-
-        lowest_key = min(dictionary_result, key=lambda k: dictionary_result[k])
-        return lowest_key, dictionary_result[lowest_key]
+            if price < min_price:  # Update min_price if current price is smaller
+                min_price = price
+        print(min_price)
+        return min_price
 
     def get_high_prices(self):
-        time.sleep(3)
-        name_element = self.find_more_elements(PageLocators.get_products_name)
-        time.sleep(3)
+        time.sleep(10)
         price_element = self.find_more_elements(PageLocators.get_product_price)
 
-        name_key = []
-        price_value = []
+        max_price = float('-inf')  # Initialize max_price to negative infinity
 
-        for price in price_element:
-            price_value.append(price.text)
+        for value in price_element:
+            price_string = value.text.replace(",", ".").replace("lei", "")
+            if price_string == "N/A":
+                continue
 
-        for name in name_element:
-            name_key.append(name.text)
+            price = float(price_string)
 
-        dictionary_result = dict(zip(name_key, price_value))
-        print(dictionary_result)
-
-        highest_key = max(dictionary_result, key=lambda k: dictionary_result[k])
-        return highest_key, dictionary_result[highest_key]
+            if price > max_price:  # Update max_price if current price is greater
+                max_price = price
+        print(max_price)
+        return max_price
 
     def first_connect_button(self):
         self.click(PageLocators.login_button)

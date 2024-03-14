@@ -32,8 +32,8 @@ class TestingSuite(unittest.TestCase):
 
         runner = HtmlTestRunner.HTMLTestRunner(
             combine_reports=True,
-            report_name='Result Test Login',
-            report_title='Positive and Negative Login Tests'
+            report_name='Result Test Cases',
+            report_title='Report 10 functionality tests'
         )
 
         runner.run(test_suite)
