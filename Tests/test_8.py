@@ -1,5 +1,5 @@
 """
-TEST account and connect button
+TEST account and connect button error
 """
 import unittest
 from selenium import webdriver

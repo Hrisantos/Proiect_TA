@@ -1,5 +1,5 @@
 """
-TEST login function with wrong data
+TEST login function with correct data
 email = test2024@yahoo.com
 pw = Parolatest
 """
