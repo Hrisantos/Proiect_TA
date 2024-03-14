@@ -24,7 +24,7 @@ class TestLowProduct(unittest.TestCase):
         main_page.open_site()
         cookies.accept_cookies()
         search_product.execute_find_product()
-        lowest_product_price = lowest_price.get_all_prices()
+        lowest_product_price = lowest_price.get_min_prices()
 
         self.assertIsInstance(lowest_product_price, float, "Product price with the lowest price is not a string")
         print("PASS")

@@ -27,7 +27,7 @@ class CorePage(BasePage):
         else:
             return len(products)
 
-    def get_all_prices(self):
+    def get_min_prices(self):
         time.sleep(10)
         price_element = self.find_more_elements(PageLocators.get_product_price)
 
